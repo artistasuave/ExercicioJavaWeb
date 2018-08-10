@@ -1,6 +1,6 @@
 package br.com.practiceMicaJavaWeb.database;
 
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 import java.sql.DriverManager;
 
 /**
@@ -14,7 +14,7 @@ public class Conexao {
     private static final String CLASS = "com.mysql.jdbc.Driver";
     private static Connection conexao;
 
-    public static Connection ObterConexao() {
+    public static Connection obterConexao() {
         try {
             Class.forName(CLASS);
             conexao = DriverManager.getConnection(HOST, USER, PASSWORD);
