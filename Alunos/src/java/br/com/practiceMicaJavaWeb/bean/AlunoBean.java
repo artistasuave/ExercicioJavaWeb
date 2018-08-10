@@ -6,7 +6,7 @@ package br.com.practiceMicaJavaWeb.bean;
 public class AlunoBean {
 
     private int id;
-    private String nome, cod_matricula;
+    private String nome, codigoMatricula;
     private double nota1, nota2, nota3;
     private byte frequencia;
 
@@ -26,12 +26,12 @@ public class AlunoBean {
         this.nome = nome;
     }
 
-    public String getCod_matricula() {
-        return cod_matricula;
+    public String getCodigoMatricula() {
+        return codigoMatricula;
     }
 
-    public void setCod_matricula(String cod_matricula) {
-        this.cod_matricula = cod_matricula;
+    public void setCodigoMatricula(String codigoMatricula) {
+        this.codigoMatricula = codigoMatricula;
     }
 
     public double getNota1() {

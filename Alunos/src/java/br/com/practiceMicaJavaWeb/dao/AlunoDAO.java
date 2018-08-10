@@ -29,7 +29,7 @@ public class AlunoDAO {
                 AlunoBean aluno = new AlunoBean();
                 aluno.setId(resultSet.getInt("id"));
                 aluno.setNome(resultSet.getString("nome"));
-                aluno.setCod_matricula(resultSet.getString("cod_matricula"));
+                aluno.setCodigoMatricula(resultSet.getString("cod_matricula"));
                 aluno.setNota1(resultSet.getDouble("nota1"));
                 aluno.setNota2(resultSet.getDouble("nota2"));
                 aluno.setNota3(resultSet.getDouble("nota3"));
@@ -55,7 +55,7 @@ public class AlunoDAO {
                 AlunoBean aluno = new AlunoBean();
                 aluno.setId(resultSet.getInt("id"));
                 aluno.setNome(resultSet.getString("nome"));
-                aluno.setCod_matricula(resultSet.getString("cod_matricula"));
+                aluno.setCodigoMatricula(resultSet.getString("cod_matricula"));
                 aluno.setNota1(resultSet.getDouble("nota1"));
                 aluno.setNota2(resultSet.getDouble("nota2"));
                 aluno.setNota3(resultSet.getDouble("nota3"));
@@ -78,7 +78,7 @@ public class AlunoDAO {
                     PreparedStatement.RETURN_GENERATED_KEYS);
             int quantidade = 1;
             ps.setString(quantidade++, aluno.getNome());
-            ps.setString(quantidade++, aluno.getCod_matricula());
+            ps.setString(quantidade++, aluno.getCodigoMatricula());
             ps.setDouble(quantidade++, aluno.getNota1());
             ps.setDouble(quantidade++, aluno.getNota1());
             ps.setDouble(quantidade++, aluno.getNota1());
@@ -102,7 +102,7 @@ public class AlunoDAO {
         try {
             PreparedStatement ps = Conexao.obterConexao().prepareStatement(sql);
             ps.setString(1, aluno.getNome());
-            ps.setString(2, aluno.getCod_matricula());
+            ps.setString(2, aluno.getCodigoMatricula());
             ps.setDouble(3, aluno.getNota1());
             ps.setDouble(4, aluno.getNota1());
             ps.setDouble(5, aluno.getNota1());
@@ -117,6 +117,17 @@ public class AlunoDAO {
         return false;
     }
 
-    
-    
+    public boolean excluir(int id){
+        String sql = "DELETE FROM alunos WHERE id=?";
+        try{
+            PreparedStatement ps = Conexao.obterConexao().prepareStatement(sql);
+            ps.setInt(1,id);
+            return ps.executeUpdate()==1;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }finally{
+            Conexao.fecharConexao();
+        }
+        return false;
+    }
 }
