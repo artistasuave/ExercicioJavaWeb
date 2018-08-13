@@ -1,6 +1,7 @@
 package br.com.practiceMicaJavaWeb.web.alunos;
 
 import br.com.practiceMicaJavaWeb.bean.AlunoBean;
+import br.com.practiceMicaJavaWeb.dao.AlunoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -26,7 +27,7 @@ public class AlunoStore extends HttpServlet {
         aluno.setNota3(Double.parseDouble(req.getParameter("nota3")));
         aluno.setFrequencia(Byte.parseByte(req.getParameter("frequencia")));
 
-        int codigo new AlunoDAO().adicionar(aluno);
+        int codigo = new AlunoDAO().adicionar(aluno);
 
         PrintWriter out = resp.getWriter();
         out.print("Cadastrado com sucesso");
